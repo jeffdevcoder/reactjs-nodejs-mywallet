@@ -38,7 +38,7 @@ Certifique-se de ter o MongoDB instalado em sua máquina. Caso ainda não tenha,
 
 5. Em seguida, localize o arquivo de configuração do projeto, chamado de `.env`. Abra o arquivo em um editor de texto.
 
-6. Dentro do arquivo de configuração, você encontrará as configurações de conexão com o banco de dados MongoDB, incluindo o host, a porta, o nome do banco de dados e outras informações relevantes. Verifique se essas configurações estão corretas para sua máquina local. Geralmente, o host será definido como `localhost` e a porta como `27017`, a menos que você tenha alterado essas configurações durante a instalação do MongoDB.
+6. Dentro do arquivo de configuração, você encontrará as configurações de conexão com o banco de dados MongoDB, incluindo o host, a porta, o nome do banco de dados e outras informações relevantes. Verifique se essas configurações estão corretas para sua máquina local. O host será definido como `localhost` e a porta como `27017`, a menos que você tenha alterado essas configurações durante a instalação do MongoDB.
 
 7. Salve as alterações no arquivo de configuração.
 
