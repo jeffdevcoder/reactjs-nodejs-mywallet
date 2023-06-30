@@ -28,7 +28,21 @@ O back-end é responsável por gerenciar os dados e fornecer as funcionalidades 
 
 Certifique-se de ter o MongoDB instalado em sua máquina. Caso ainda não tenha, faça o download do MongoDB em https://www.mongodb.com/ e siga as instruções de instalação adequadas para o seu sistema operacional.
 
-1. Após a instalação, abra um terminal ou prompt de comando e inicie o servidor do MongoDB executando o seguinte comando: `mongod`. Isso iniciará o servidor do MongoDB localmente na porta padrão 27017.
+
+### Mongodb ara Ubuntu 22.04+:
+sudo apt-get install gnupg wget
+wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
+sudo apt-get update
+
+wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.1f-1ubuntu2_amd64.deb
+sudo dpkg -i libssl1.1_1.1.1f-1ubuntu2_amd64.deb
+sudo apt install -y mongodb-org
+mkdir ~/.mongo
+
+### Iniciando servidor
+
+1. Após a instalação, abra um terminal ou prompt de comando e inicie o servidor do MongoDB executando o seguinte comando: `mongod --dbpath ~/.mongo`. Isso iniciará o servidor do MongoDB localmente na porta padrão 27017.
 
 2. Abra uma nova janela do terminal ou prompt de comando e navegue até o diretório do projeto clonado, onde está localizado o back-end que utiliza o MongoDB.
 
