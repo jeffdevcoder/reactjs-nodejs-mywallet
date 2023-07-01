@@ -1,45 +1,52 @@
-import styled from "styled-components"
-import { Link } from "react-router-dom"
-import React, { useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import axios from "axios"
-import { AuthContext } from "../provider"
+import styled from "styled-components";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Home({ nome, setNome, info, setInfo }){
-    const { token } = React.useContext(AuthContext);
     const navigate = useNavigate();
 
-   function carregarUsuario(){
-        useEffect(() => {
-            const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/usuario`, {
-                headers: {
-                    "Authorization": `${token}`
-                }
-            })
-            requisicao.then((res) => {
-                setNome(res.data.nome);
-            })
-        }, [])
-   }
-   carregarUsuario();
-
-   function carregarRegistros(){
     useEffect(() => {
+      const nome = localStorage.getItem("nome");
+      if (nome) {
+        setNome(nome);
+      }
+    }, [setNome]);
+
+    useEffect(() => {
+        localStorage.setItem("nome", nome);
+    }, [nome]);
+
+   
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+
         const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/registros`, {
             headers: {
-                "Authorization": `${token}`
+                "Authorization": `Bearer ${token}`
             }
         })
         requisicao.then((res) => {
             console.log("chegou as informações de registro!", res.data);
-            setInfo(res.data)
+            setInfo(res.data);
+            localStorage.setItem("info", JSON.stringify(res.data));
         })
         requisicao.catch((err) => {
             console.log("Algo deu erro no banco de dados!", err);
         })
     },[])
-   }
-   carregarRegistros();
+
+   useEffect(() => {
+    const infoData = localStorage.getItem("info");
+        if (infoData) {
+        setInfo(JSON.parse(infoData));
+        }
+    }, [setInfo]);
+
+  useEffect(() => {
+    localStorage.setItem("info", JSON.stringify(info));
+  }, [info]);
 
     function voltarParaLogin(){
         navigate("/");
@@ -62,7 +69,7 @@ export default function Home({ nome, setNome, info, setInfo }){
                 <ContainerInformacoes>
                     <section>
                         {info.map(i => (
-                        <div>
+                        <div key={i._id}>
                             <p>{i.data}</p>
                             <h1>{i.descricao}</h1>
                             <h2>{i.valor}</h2>
@@ -176,9 +183,9 @@ const ContainerInformacoes = styled.div`
                 font-family: 'Raleway';
                 font-style: normal;
                 font-weight: 700;
-                font-size: 16px;
+                font-size: 20px;
                 line-height: 19px;
-                color: #C6C6C6;
+                color: gray;
             }
             h1 {
                 font-family: 'Raleway';
@@ -192,7 +199,7 @@ const ContainerInformacoes = styled.div`
                 font-family: 'Raleway';
                 font-style: normal;
                 font-weight: 700;
-                font-size: 16px;
+                font-size: 18px;
                 line-height: 19px;
                 text-align: right;
                 color: green;
@@ -234,5 +241,4 @@ const Botoes = styled.div`
             color: #FFFFFF;
         }
     }
-    
 `;

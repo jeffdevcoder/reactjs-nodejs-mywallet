@@ -1,16 +1,15 @@
-import styled from "styled-components"
-import { useNavigate } from "react-router-dom"
-import axios from "axios"
-import React from "react"
-import { useContext } from "react"
-import { AuthContext } from "../provider"
+import axios from "axios";
+import React from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export default function NovaSaida({ valor, setValor, descricao, setDescricao }){
-    const { token } = React.useContext(AuthContext);
     const navigate = useNavigate();
 
     function inserirNovaSaida(e){
         e.preventDefault();
+
+        const token = localStorage.getItem("token");
 
         const requisicao = axios.post(`${process.env.REACT_APP_API_URL}/registros`, { 
             valor: valor, 
@@ -60,16 +59,17 @@ export default function NovaSaida({ valor, setValor, descricao, setDescricao }){
 }
 
 const Container = styled.div`
-width: 100vw;
-height: 100vh;
-background: #8C2EBE;
-display: flex;
-flex-direction: row;
-justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: #8C2EBE;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 `;
 
-const Tela = styled.div`  
-    width: 85%;
+const Tela = styled.div`
+  width: 85%;
+  background-color: ${(props) => (props.tipo === 'saida' ? '#E74C3C' : '')};
 `;
 
 const Topo = styled.div`
@@ -99,6 +99,7 @@ const Formulario = styled.div`
         border-radius: 5px;
         border-style: none;
         margin-bottom: 13px;
+        font-size: 24px;
         ::placeholder {
             font-family: 'Raleway';
             font-weight: 700;
