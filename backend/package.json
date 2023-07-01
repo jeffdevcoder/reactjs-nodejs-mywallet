@@ -5,7 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon ./src/server.js"
+    "start": "nodemon ./src/server.js",
+    "db:create": "mongo mongodb://127.0.0.1:27017 --eval 'db.getSiblingDB(\"mywallet\").createUser({ user: \"myuser\", pwd: \"mypassword\", roles: [ { role: \"readWrite\", db: \"mywallet\" } ] })'"
   },
   "keywords": [],
   "author": "",
