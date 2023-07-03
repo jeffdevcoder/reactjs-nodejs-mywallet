@@ -29,7 +29,7 @@ O back-end é responsável por gerenciar os dados e fornecer as funcionalidades 
 Certifique-se de ter o MongoDB instalado em sua máquina. Caso ainda não tenha, faça o download do MongoDB em https://www.mongodb.com/ e siga as instruções de instalação adequadas para o seu sistema operacional.
 
 
-### Mongodb ara Ubuntu 22.04+:
+### Mongodb ara Ubuntu 22.04+ (terminal):
 sudo apt-get install gnupg wget
 wget -qO - https://www.mongodb.org/static/pgp/server-5.0.asc | sudo apt-key add -
 echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/5.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-5.0.list
