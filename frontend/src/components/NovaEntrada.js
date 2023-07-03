@@ -1,7 +1,9 @@
 import axios from "axios";
 import React from "react";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function NovaEntrada({ valor, setValor, descricao, setDescricao }){
     const navigate = useNavigate();
@@ -13,17 +15,20 @@ export default function NovaEntrada({ valor, setValor, descricao, setDescricao }
 
         const requisicao = axios.post(`${process.env.REACT_APP_API_URL}/registros`, { 
             valor: valor, 
-            descricao: descricao
+            descricao: descricao,
+            tipo: "entrada"
         }, {
             headers: {
                 "Authorization": `${token}`
             }
         })
             requisicao.then((res) => {
+                toast.success("Registro feito com sucesso!")
                 navigate("/home");
             })
             requisicao.catch(err => {
                 console.log("Algo deu errado no envio dos dados!", err);
+                toast.error("Algo deu errado com a requisição.")
             })  
     }
 
@@ -31,6 +36,9 @@ export default function NovaEntrada({ valor, setValor, descricao, setDescricao }
         <Container>
             <Tela>
                 <Topo>
+                    <Link to={"/home"}>
+                        <ion-icon name="arrow-back-outline"></ion-icon>
+                    </Link> 
                     <p>Nova entrada</p>
                 </Topo>
 

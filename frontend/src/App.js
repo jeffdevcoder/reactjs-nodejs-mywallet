@@ -58,6 +58,7 @@ export default function App() {
               setValor={setValor}
               descricao={descricao}
               setDescricao={setDescricao}
+              setInfo={setInfo}
             />
           }/>
           <Route path="/nova-saida" element={
@@ -66,6 +67,7 @@ export default function App() {
               setValor={setValor}
               descricao={descricao}
               setDescricao={setDescricao}
+              setInfo={setInfo}
             />
           }/>
         </Routes>

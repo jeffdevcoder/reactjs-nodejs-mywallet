@@ -132,15 +132,16 @@ server.post("/login", async (req, res) => {
 });
   
 server.post("/registros", async (req, res) => {
-    const { valor, descricao } = req.body;
+    const { valor, descricao, tipo } = req.body;
     const token = req.headers.authorization?.replace("Bearer ", "");
   
     const registroSchema = joi.object({
       valor: joi.number().required(),
-      descricao: joi.string().required()
+      descricao: joi.string().required(),
+      tipo: joi.string().required(),
     });
   
-    const { error } = registroSchema.validate({ valor, descricao }, { abortEarly: false });
+    const { error } = registroSchema.validate({ valor, descricao, tipo }, { abortEarly: false });
   
     if (error) {
       const errosMensagens = error.details.map(err => err.message);
@@ -157,6 +158,7 @@ server.post("/registros", async (req, res) => {
       const registro = await db.collection("registros").insertOne({
         valor,
         descricao,
+        tipo,
         data: dayjs().format("DD/MM"),
         idUsuario: usuarioSessao.idUsuario,
         nome: usuario.nome

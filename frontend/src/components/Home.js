@@ -53,49 +53,51 @@ export default function Home({ nome, setNome, info, setInfo }){
     }
 
     return (
-        <Container>
-            <Tela>
-                <Topo>
-                    <p>Olá, {nome}</p>
-                    <ion-icon onClick={voltarParaLogin} name="exit-outline"></ion-icon>
-                </Topo>
+      <Container>
+        <Tela>
+          <Topo>
+            <p>Olá, {nome}</p>
+            <ion-icon onClick={voltarParaLogin} name="exit-outline"></ion-icon>
+          </Topo>
 
-                <ContainerSemInformacoes>
-                    <div>
-                        <p>Não há registros de entrada ou saída</p>
-                    </div>                   
-                </ContainerSemInformacoes>
+          {info.length === 0 ? (
+            <ContainerSemInformacoes>
+              <div>
+                <p>Não há registros de entrada ou saída</p>
+              </div>
+            </ContainerSemInformacoes>
+          ) : (
+            <ContainerInformacoes>
+              <section>
+                {info.map((i) => (
+                  <div key={i._id}>
+                    <p>{i.data}</p>
+                    <h1>{i.descricao}</h1>
+                    <h2 style={{ color: i.tipo === "entrada" ? "green" : "red" }}>R${i.valor}</h2>
+                  </div>
+                ))}
+              </section>
+            </ContainerInformacoes>
+          )}
 
-                <ContainerInformacoes>
-                    <section>
-                        {info.map(i => (
-                        <div key={i._id}>
-                            <p>{i.data}</p>
-                            <h1>{i.descricao}</h1>
-                            <h2>{i.valor}</h2>
-                        </div>
-                        ))}
-                    </section>
-                </ContainerInformacoes>
+          <Botoes>
+            <Link to={"/nova-entrada"}>
+              <button>
+                <ion-icon name="add-circle-outline"></ion-icon>
+                <p>Nova entrada</p>
+              </button>
+            </Link>
 
-                <Botoes>
-                    <Link to={"/nova-entrada"}>
-                        <button>
-                            <ion-icon name="add-circle-outline"></ion-icon>
-                            <p>Nova entrada</p>
-                        </button>
-                    </Link>
-                    
-                    <Link to={"/nova-saida"}>
-                        <button>
-                            <ion-icon name="remove-circle-outline"></ion-icon>
-                            <p>Nova saída</p>
-                        </button>
-                    </Link>
-                </Botoes>
-            </Tela>
-        </Container>
-    )
+            <Link to={"/nova-saida"}>
+              <button>
+                <ion-icon name="remove-circle-outline"></ion-icon>
+                <p>Nova saída</p>
+              </button>
+            </Link>
+          </Botoes>
+        </Tela>
+      </Container>
+    );
 }
 
 
@@ -139,23 +141,20 @@ const ContainerSemInformacoes = styled.div`
     margin-top: 18px;
     border-radius: 5px;
     position: relative;
-    display: none;
     div {
-        width: 100%;
         display: flex;
         justify-content: center;
-    }
-    p {
-        width: 180px;
-        text-align: center;
-        font-family: 'Raleway';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 23px;
-        color: #868686;
-        position: absolute;
-        top: 200px;
+        align-items: center;
+        margin-bottom: 7px;
+        height: 100%;
+        p {
+            font-family: 'Raleway';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 19px;
+            color: gray;
+        }
     }
 `;
 
