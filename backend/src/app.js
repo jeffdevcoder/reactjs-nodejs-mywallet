@@ -1,16 +1,30 @@
-import express, { json } from "express";
-import cors from "cors"
-import { MongoClient } from "mongodb";
-import dotenv from "dotenv"
+import cors from "cors";
+import dotenv from "dotenv";
 import bcrypt from 'bcrypt';
-import joi from "joi"
-import { v4 as uuid } from 'uuid';
+import joi from "joi";
 import dayjs from "dayjs";
+import mongoose from "mongoose";
+import { v4 as uuid } from 'uuid';
+import express, { json } from "express";
+import { MongoClient } from "mongodb";
 dotenv.config();
 
-const server = express();
-server.use(json());
-server.use(cors());
+const app = express();
+app.use(json());
+app.use(cors());
+
+
+if (process.env.NODE_ENV === "test") {
+  mongoose.connect(process.env.DATABASE_URL_TEST, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+} else {
+  mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+}
 
 const mongoClient = new MongoClient(process.env.DATABASE_URL);
 let db;
@@ -20,8 +34,9 @@ mongoClient.connect().then(() => {
 })
 .catch(() => {
     console.log("Erro interno no banco de dados");
-})
+});
 
+export default app;
 
 function usuarioJaCadastrado(message) {
     const error = new Error(message);
@@ -59,7 +74,7 @@ function nenhumRegistroEncontrado(message) {
     return error;
 };
   
-server.post("/cadastro", async (req, res) => {
+app.post("/cadastro", async (req, res) => {
     const { nome, email, senha, confirmaSenha } = req.body;
   
     const usuarioSchema = joi.object({
@@ -93,7 +108,7 @@ server.post("/cadastro", async (req, res) => {
     }
 });
   
-server.post("/login", async (req, res) => {
+app.post("/login", async (req, res) => {
     const { email, senha } = req.body;
   
     const usuarioSchema = joi.object({
@@ -131,7 +146,7 @@ server.post("/login", async (req, res) => {
     }
 });
   
-server.post("/registros", async (req, res) => {
+app.post("/registros", async (req, res) => {
     const { valor, descricao, tipo } = req.body;
     const token = req.headers.authorization?.replace("Bearer ", "");
   
@@ -181,7 +196,7 @@ server.post("/registros", async (req, res) => {
     }
 });
   
-server.get("/registros", async (req, res) => {
+app.get("/registros", async (req, res) => {
     const token = req.headers.authorization?.replace("Bearer ", "");
   
     try {
@@ -205,7 +220,7 @@ server.get("/registros", async (req, res) => {
     }
 });
   
-server.get("/usuario", async (req, res) => {
+app.get("/usuario", async (req, res) => {
     const token = req.headers.authorization?.replace("Bearer ", "");
 
     try {
@@ -228,4 +243,4 @@ server.get("/usuario", async (req, res) => {
 });
 
 const PORT = 5000;
-server.listen(PORT, () => console.log(`Estou rodando na porta ${PORT}`));
+app.listen(PORT, () => console.log(`Estou rodando na porta ${PORT}`));
