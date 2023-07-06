@@ -1,6 +1,6 @@
 # My Wallet
 
-O MyWallet é um aplicativo de gestão financeira que permite aos usuários registrar suas entradas e saídas de dinheiro. A interface do usuário foi desenvolvida usando a biblioteca React, garantindo uma experiência interativa e responsiva. No lado do servidor, o projeto utiliza o Node.js juntamente com o banco de dados MongoDB. O aplicativo oferece uma visão geral das finanças do usuário, incluindo acompanhamento do saldo e análise das transações realizadas.
+O MyWallet é um aplicativo de gestão financeira para dispositivos móveis, que permite aos usuários registrar suas entradas e saídas de dinheiro. A interface do usuário foi desenvolvida usando a biblioteca React, garantindo uma experiência interativa e responsiva para dispositivos móveis. No lado do servidor, o projeto utiliza o Node.js juntamente com o banco de dados MongoDB. O aplicativo oferece uma visão geral das finanças do usuário, incluindo acompanhamento do saldo e análise das transações realizadas.
 
 [![Vídeo do Loom](https://cdn.loom.com/sessions/thumbnails/263febee405c4909aabc429bea612d60-with-play.gif)](https://www.loom.com/share/263febee405c4909aabc429bea612d60)
 
