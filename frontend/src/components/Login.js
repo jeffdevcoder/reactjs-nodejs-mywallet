@@ -15,7 +15,7 @@ export default function Login({ email, senha, setEmail, setSenha }) {
     useEffect(() => {
         setEmail('');
         setSenha('');
-    }, [])
+    }, []);
 
     const { setToken } = React.useContext(AuthContext);
     const navigate = useNavigate();
@@ -52,8 +52,7 @@ export default function Login({ email, senha, setEmail, setSenha }) {
                 </Logo>
 
                 <ContainerInputs>
-                    <Inputs>
-                    <form onSubmit={fazerLogin}>
+                    <Inputs onSubmit={fazerLogin}>
                         <input 
                             type="email" 
                             required 
@@ -69,27 +68,25 @@ export default function Login({ email, senha, setEmail, setSenha }) {
                             value={senha}
                         />
                         <button type="submit">Entrar</button>
-                    </form>
-                    </Inputs>
-                    <p>Primeira vez? <LinkPersonalizado to={"/cadastro"}>Cadastre-se!</LinkPersonalizado></p>
+                        <LinkPersonalizado to={"/cadastro"}>Cadastra-se</LinkPersonalizado>
+                    </Inputs>                    
                 </ContainerInputs>
             </div>
-        </Container>
-        
+        </Container>        
     )
 }
 
 const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background: #8C2EBE;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 const Logo = styled.div`
-  margin-top: 150px;
   display: flex;
   justify-content: center;
   p { 
@@ -115,8 +112,12 @@ const ContainerInputs = styled.div`
   }
 `;
 
-const Inputs = styled.div`
-  width: 326px;
+const Inputs = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   button {
     width: 326px;
     height: 46px;
@@ -127,6 +128,7 @@ const Inputs = styled.div`
     font-family: 'Raleway';
     font-weight: 700;
     font-size: 20px;
+    margin-bottom: 10px;
   }
   input {
     width: 324px;
@@ -149,12 +151,18 @@ const Inputs = styled.div`
 `;
 
 const LinkPersonalizado = styled(Link)`
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
+  width: 326px;
+  height: 46px;
+  background-color: #A328D6;
+  border-radius: 5px;
+  border-style: none;
   color: #FFFFFF;
-  margin-top: 36px;
-  line-height: 18px;
+  font-family: 'Raleway';
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

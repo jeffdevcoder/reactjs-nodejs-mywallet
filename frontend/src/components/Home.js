@@ -54,7 +54,7 @@ export default function Home({ nome, setNome, info, setInfo }){
 
     return (
       <Container>
-        <Tela>
+      <Tela>
           <Topo>
             <p>Olá, {nome}</p>
             <ion-icon onClick={voltarParaLogin} name="exit-outline"></ion-icon>
@@ -94,24 +94,30 @@ export default function Home({ nome, setNome, info, setInfo }){
                 <p>Nova saída</p>
               </button>
             </Link>
-          </Botoes>
-        </Tela>
+          </Botoes>        
+      </Tela>
       </Container>
     );
 }
 
 
-const Container = styled.div`
-width: 100vw;
-height: 100vh;
-background: #8C2EBE;
-display: flex;
-flex-direction: row;
-justify-content: center;
+const Tela = styled.div`
+  width: 90%;
+  height: 100vh;
+  background-color: #8C2EBE;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
-const Tela = styled.div`  
-    width: 85%;
+const Container = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: #8C2EBE;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Topo = styled.div`
@@ -165,6 +171,8 @@ const ContainerInformacoes = styled.div`
     margin-top: 18px;
     border-radius: 5px;
     position: relative;
+    display: flex;
+    justify-content: center;
     section {
         position: absolute;
         width: 90%;
@@ -212,6 +220,7 @@ const Botoes = styled.div`
     justify-content: space-between;
     width: 100%;
     margin-top: 13px;
+    margin-bottom: 25px;
     button {
         width: 155px;
         height: 100px;

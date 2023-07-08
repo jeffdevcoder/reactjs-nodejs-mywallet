@@ -51,64 +51,62 @@ export default function Cadastro({
     }
 
     return (
-    <Container>
-        <div>
-            <Logo>
-                <p>MyWallet</p>
-            </Logo>
+      <Container>
+          <div>
+              <Logo>
+                  <p>MyWallet</p>
+              </Logo>
 
-            <ContainerInputs>
-                <Inputs>
-                <form onSubmit={seCadastrar}>
-                    <input 
-                        type="name" 
-                        required 
-                        onChange={(e) => setNome(e.target.value)} 
-                        placeholder="Nome"
-                        value={nome}
-                    />
-                    <input 
-                        type="email" 
-                        required 
-                        onChange={(e) => setEmail(e.target.value)} 
-                        placeholder="E-mail"
-                        value={email}
-                    />
-                    <input 
-                        type="password" 
-                        required 
-                        onChange={(e) => setSenha(e.target.value)} 
-                        placeholder="Senha"
-                        value={senha}
-                    />
-                    <input 
-                        type="password" 
-                        required 
-                        onChange={(e) => setConfirmaSenha(e.target.value)} 
-                        placeholder="Senha"
-                        value={confirmaSenha}
-                    />
-                    <button type="submit">Cadastrar</button>
-                    </form>
-                    <p>Já tem uma conta? <LinkPersonalizado to={"/"}>Entre agora!</LinkPersonalizado></p>
-                </Inputs>               
-            </ContainerInputs>
-        </div>
-    </Container>
+              <ContainerInputs>
+                  <Inputs onSubmit={seCadastrar}>                
+                      <input 
+                          type="name" 
+                          required 
+                          onChange={(e) => setNome(e.target.value)} 
+                          placeholder="Nome"
+                          value={nome}
+                      />
+                      <input 
+                          type="email" 
+                          required 
+                          onChange={(e) => setEmail(e.target.value)} 
+                          placeholder="E-mail"
+                          value={email}
+                      />
+                      <input 
+                          type="password" 
+                          required 
+                          onChange={(e) => setSenha(e.target.value)} 
+                          placeholder="Senha"
+                          value={senha}
+                      />
+                      <input 
+                          type="password" 
+                          required 
+                          onChange={(e) => setConfirmaSenha(e.target.value)} 
+                          placeholder="Senha"
+                          value={confirmaSenha}
+                      />
+                      <button type="submit">Cadastrar</button>      
+                      <LinkPersonalizado to={"/"}>Voltar para Login</LinkPersonalizado>
+                  </Inputs>               
+              </ContainerInputs>
+          </div>
+      </Container>
     )
 }
 
 const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   background: #8C2EBE;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 const Logo = styled.div`
-  margin-top: 150px;
   display: flex;
   justify-content: center;
   p { 
@@ -130,13 +128,16 @@ const ContainerInputs = styled.div`
     margin-top: 36px;
     margin-left: 16%;
     line-height: 18px;
-    margin-left: 50px;
-    margin-bottom: 30px;
+    margin-left: 75px;
   }
 `;
 
-const Inputs = styled.div`
-  width: 326px;
+const Inputs = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   button {
     width: 326px;
     height: 46px;
@@ -147,6 +148,7 @@ const Inputs = styled.div`
     font-family: 'Raleway';
     font-weight: 700;
     font-size: 20px;
+    margin-bottom: 10px;
   }
   input {
     width: 324px;
@@ -156,7 +158,7 @@ const Inputs = styled.div`
     margin-bottom: 13px;
     border-style: none;
     font-family: 'Raleway';
-    font-size: 24px;
+    font-size: 24px; 
     ::placeholder {
       font-family: 'Raleway';
       font-weight: 700;
@@ -169,12 +171,18 @@ const Inputs = styled.div`
 `;
 
 const LinkPersonalizado = styled(Link)`
-  font-family: 'Raleway';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
+  width: 326px;
+  height: 46px;
+  background-color: #A328D6;
+  border-radius: 5px;
+  border-style: none;
   color: #FFFFFF;
-  margin-top: 36px;
-  line-height: 18px;
+  font-family: 'Raleway';
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
