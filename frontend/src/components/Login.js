@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import dotenv from "dotenv";
 import axios from "axios";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
@@ -7,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-dotenv.config();
 
 export default function Login({ email, senha, setEmail, setSenha }) {
 

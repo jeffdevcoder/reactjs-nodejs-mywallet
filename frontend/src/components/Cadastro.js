@@ -1,13 +1,10 @@
 import axios from "axios";
 import React from "react";
-import dotenv from "dotenv";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-dotenv.config();
 
 export default function Cadastro({ 
     email, 

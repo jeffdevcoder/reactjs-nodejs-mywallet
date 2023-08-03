@@ -4,19 +4,19 @@
   "private": true,
   "dependencies": {
     "axios": "^0.24.0",
-    "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.1.1",
-    "react-scripts": "^5.0.0", 
-    "styled-components": "^5.3.6",
-    "react-toastify": "^8.0.0"
+    "react-scripts": "^5.0.0",
+    "react-toastify": "^8.0.0",
+    "styled-components": "^5.3.6"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:env": "dotenv-webpack --node-env production react-scripts build"
   },
   "eslintConfig": {
     "extends": [
@@ -34,8 +34,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "dotenv-webpack": "^8.0.1"
   }
 }
