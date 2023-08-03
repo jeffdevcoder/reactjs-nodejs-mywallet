@@ -137,6 +137,7 @@ const Topo = styled.div`
         width: 40px;
         height: 40px;
         color: white;
+        cursor: pointer;
     }
 `;
 
@@ -228,6 +229,7 @@ const Botoes = styled.div`
         border-radius: 5px;
         border-style: none;
         position: relative;
+        cursor: pointer;
         ion-icon {
             width: 25px;
             height: 25px;

@@ -146,6 +146,7 @@ const Inputs = styled.form`
     font-weight: 700;
     font-size: 20px;
     margin-bottom: 10px;
+    cursor: pointer;
   }
   input {
     width: 324px;
@@ -182,4 +183,5 @@ const LinkPersonalizado = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;

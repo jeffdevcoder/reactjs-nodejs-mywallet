@@ -126,6 +126,7 @@ const Formulario = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
         p {
             font-family: 'Raleway';
             font-style: normal;
