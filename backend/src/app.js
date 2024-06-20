@@ -23,9 +23,9 @@ app.use(cors());
 
 const DATABASE_URL = process.env.NODE_ENV === "test" ? process.env.DATABASE_URL_TEST : process.env.DATABASE_URL;
 
-const Usuario = mongoose.Schema("Usuario", usuarioSchema);
-const Sessao = mongoose.Schema("Sessao", sessaoSchema);
-const Registro = mongoose.Schema("Registro", registroSchema);
+const Usuario = mongoose.model("Usuario", usuarioSchema);
+const Sessao = mongoose.model("Sessao", sessaoSchema);
+const Registro = mongoose.model("Registro", registroSchema);
 
 (async () => {
   try {
