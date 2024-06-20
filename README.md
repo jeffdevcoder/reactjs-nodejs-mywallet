@@ -22,4 +22,4 @@ Backend: A API backend foi desenvolvida usando o framework Express.js, que facil
 Banco de Dados: O MongoDB foi utilizado para armazenar e gerenciar as informações das transações dos usuários.
 
 ## Deploy
-O MyWallet está implantado na plataforma Vercel e pode ser acessado através do seguinte link: https://mywallet-front-snowy.vercel.app/.
+O MyWallet está implantado na plataforma Vercel e pode ser acessado através do seguinte link: https://mywallet-front-snowy.vercel.app/
